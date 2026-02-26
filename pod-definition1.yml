@@ -1,0 +1,16 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+    name: mysql-pod
+    labels:
+      app: mydb
+      created_by: Vinnu2210
+spec: 
+  containers:
+   - name: dbcontainer
+     image: mysql
+     env:
+      - name: MYSQL_ROOT_PASSWORD
+        value: "Vinnu@2210"
+...

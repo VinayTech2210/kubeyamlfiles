@@ -1,0 +1,29 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+ name: jenkins-pod
+ labels:
+    pipeline: jenkins-pipeline
+    author: Vinnu2210
+spec:
+ containers:
+   - name: jenkins-container
+     image: jenkins/jenkins
+     ports:
+      - containerPort: 8080
+        
+---
+apiVersion: v1
+kind: Service
+metadata:
+ name: jenkins-ip
+spec:
+ type: LoadBalancer
+ selector:
+  pipeline: jenkins-pipeline
+ ports:
+ - port: 9090
+   targetPort: 8080
+
+
