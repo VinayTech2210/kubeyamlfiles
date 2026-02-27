@@ -1,0 +1,30 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+ name: ghost-app
+ labels:
+     app: ghost
+     author: vinay
+spec:
+   containers: 
+     - name: ghost-container
+       image: ghost
+       env:
+         - name: NODE_ENV
+           value: development
+       ports:
+         - containerPort: 2368
+---
+apiVersion: v1
+kind: Service
+metadata:
+    name: ghost-ip
+spec:
+  type: LoadBalancer
+  selector:
+   app: ghost
+  ports:
+   - targetPort: 2368
+     port: 1111
+...
