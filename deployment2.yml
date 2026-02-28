@@ -1,0 +1,54 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+   name: mysql-deployment
+   labels: 
+      app: mydb
+      created_by: Vinay
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: mydb
+  template:
+    metadata:
+      name: mysql-pod
+      labels:
+        app: mydb
+    spec:
+      containers:
+        - name: mysql-container
+          image: mysql
+          ports:
+           - containerPort: 3306
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: Vinnu2210
+            - name: MYSQL_USER
+              value: vinnu
+            - name: MYSQL_DATABASE
+              value: mydb
+
+---
+apiVersion: v1
+kind: Service
+metadata: 
+ name: mysql-ip
+spec:
+  type: LoadBalancer
+  selector:
+   app: mydb 
+  ports:
+   - targetPort: 3306
+     port: 7777
+...
+
+
+
+
+
+
+
+
+
