@@ -1,2 +1,11 @@
 .gitconfig
 .local/
+.Azure/
+.azure/
+.cache/
+.kube/
+.bash_logout
+.bash_profile
+.bashrc
+.tmux.conf
+.zshrc
